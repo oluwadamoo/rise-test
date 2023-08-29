@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./src/assets/icon.png",
+        "foregroundImage": "./src/assets/4x4-icon.png",
         "backgroundColor": "#0898A0"
       },
       "package": "com.oluwadamoo.risevesttest"
