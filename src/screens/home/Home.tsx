@@ -2,16 +2,17 @@ import { View, Text, SafeAreaView, StyleSheet, ImageBackground, TouchableOpacity
 import React, { useEffect, useRef, useState } from 'react'
 import { COLORS, SIZES, commonStyles } from '../../constants/theme'
 import { LINEARBG } from '../../constants/images'
-import { CustomButton, HomeLoader, PlanCard } from '../../components'
+import { CustomButton, HomeLoader, PlanCard, ToastMessage } from '../../components'
 import { BELLICON, LEFTARROWICON, EYEOFFICON, CARETRIGHTICON, ADDICON, ADDROUNDICON, QMARKICON, SHAREICON, LOGOICON } from '../../constants/icons'
 import PagerView from 'react-native-pager-view';
 import { Greeting, IPlan, IUser, } from '../../constants/data'
 import { useQuery } from '@tanstack/react-query'
 import { useIsFocused } from '@react-navigation/native'
 import { AUTH, PLAN } from '../../api'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { updateUser } from '../../store/user.reducer'
 import { formatToMoney } from '../../utils/formatters'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface IQuote {
     quote: string;
@@ -20,12 +21,14 @@ interface IQuote {
 
 
 export function Home({ navigation }: any) {
-    const [user, setUser] = useState<IUser>()
+    const stateUser = useSelector((state: any) => state.user.user)
+    const [user, setUser] = useState<IUser>(stateUser)
     const [refreshing, setRefreshing] = useState(false)
     const [plans, setPlans] = useState<IPlan[]>([])
     const [quote, setQuote] = useState<IQuote>()
     const dispatch = useDispatch()
     const pagerRef = useRef<PagerView>(null);
+    const [error, setError] = useState('')
 
     const isFocused = useIsFocused();
 
@@ -51,11 +54,17 @@ export function Home({ navigation }: any) {
         getQuotes.refetch()
     }, [isFocused]);
 
+
     useEffect(() => {
         if (getSession.isSuccess && getSession.data) {
+
+
             const user: any = getSession.data
 
-            if (user?.data) {
+            if (user?.data.message) {
+                // setError(user?.data.message)
+            }
+            if (!user?.data.message) {
                 setUser(user.data)
                 dispatch(updateUser(user.data))
             }
@@ -83,6 +92,8 @@ export function Home({ navigation }: any) {
     }
     return (
         <SafeAreaView style={commonStyles.screenWrapper}>
+            {error ? <ToastMessage message={error} type={'error'} close={() => setError("")}
+            /> : null}
             {
                 getPlans.isLoading || getQuotes.isLoading || getSession.isLoading ?
                     <HomeLoader /> :
@@ -153,7 +164,7 @@ export function Home({ navigation }: any) {
                                                     </View>
 
                                                     <Text style={styles.bal}>
-                                                        ${formatToMoney(user?.total_balance.toString())}
+                                                        ${formatToMoney(user?.total_balance?.toString())}
 
                                                     </Text>
 
@@ -228,7 +239,7 @@ export function Home({ navigation }: any) {
                                                     <PlanCard
                                                         onPress={() => navigation.navigate("InvestmentPlanDetails", { planId: item.id })}
                                                         title={item.plan_name}
-                                                        amount={item.target_amount.toString()}
+                                                        amount={item.target_amount?.toString()}
 
                                                     />
                                                 </>

@@ -82,7 +82,7 @@ export const ChoosePlan = ({ navigation }: any) => {
                                     marginLeft: index % 2 > 0 ? 10 : 0,
                                     marginBottom: 10,
                                     width: SIZES.width > (188 * 2) ? 331 / 2 : SIZES.width
-                                }} title={item.plan_name} amount={item.target_amount.toString()} />
+                                }} title={item?.plan_name} amount={item?.target_amount.toString()} />
                         )}
                     />
                 </View>

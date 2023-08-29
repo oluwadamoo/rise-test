@@ -78,7 +78,7 @@ export const CreateInvestmentPlanReview = ({ navigation, route }: any) => {
         const numOfMonths = getMonthsDifference(new Date(), new Date(maturity_date))
         const monthlyInvestmentInDollar = parseFloat(toDollarNaira({ type: "dollar", rate, target_amount })) / numOfMonths
 
-        return formatToMoney(monthlyInvestmentInDollar.toString())
+        return formatToMoney(monthlyInvestmentInDollar?.toString())
     }
 
 

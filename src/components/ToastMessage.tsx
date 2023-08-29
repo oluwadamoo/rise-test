@@ -73,7 +73,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 100
+        zIndex: 100,
+        paddingHorizontal: SIZES.padding
 
     },
     toast_content_container: {
