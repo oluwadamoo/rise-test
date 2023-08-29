@@ -4,11 +4,11 @@ Welcome to the documentation for Risevest-test app! This guide will help you und
 
 ## Table of Contents
 
-1. [Getting Started](#getting-started)
-2. [Installation and Setup](#installation-and-setup)
-3. [State Management](#state-management)
-4. [Navigation](#navigation)
-5. [Contributors](#contributors)
+1. [Getting Started](#1-getting-started)
+2. [Installation and Setup](#2-installation-and-setup)
+3. [State Management](#3-state-management)
+4. [Navigation](#4-navigation)
+5. [Contributors](#5-contributors)
 
 ## 1. Getting Started
 
