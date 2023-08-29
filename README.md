@@ -5,17 +5,10 @@ Welcome to the documentation for Risevest-test app! This guide will help you und
 ## Table of Contents
 
 1. [Getting Started](#getting-started)
-2. [Project Structure](#project-structure)
-3. [Installation and Setup](#installation-and-setup)
-4. [Usage](#usage)
-5. [Components](#components)
-6. [State Management](#state-management)
-7. [Navigation](#navigation)
-8. [Contributing](#contributing)
-9. [Testing](#testing)
-10. [Deployment](#deployment)
-11. [Troubleshooting](#troubleshooting)
-12. [License](#license)
+2. [Installation and Setup](#installation-and-setup)
+3. [State Management](#state-management)
+4. [Navigation](#navigation)
+5. [Contributors](#contributors)
 
 ## 1. Getting Started
 
@@ -38,10 +31,38 @@ Before you begin, make sure you have the following prerequisites installed:
 To get started, clone this repository to your local machine using the following command:
 
 ```bash
-git clone https://github.com/your-username/your-app.git
+git clone https://github.com/oluwadamoo/rise-test.git
 ```
 
-## 4. Usage
+### Install Dependencies
+Navigate to the project directory and install the required dependencies using npm:
 
-Here's how you can use the app...
+```bash
+cd risevest-test
+```
 
+```bash
+npm install
+```
+
+### Running the App
+To run on Android:
+
+```bash
+npm run android
+```
+
+To run on IOS:
+
+```bash
+npm run ios
+```
+
+## 3. State Management
+This app uses Redux for state management
+
+## 4. Navigation
+This app uses React Navigation 6 for navigation
+
+## 5. Contributors
+This app was created by [Damilola Saliu](https://github.com/oluwadamoo).
